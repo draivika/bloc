@@ -1,6 +1,6 @@
 /* ==========================================================================
    Bloc — a graph-paper notepad theme for Obsidian
-   Version 0.1.1 · Drai
+   Version 0.1.2 · Drai
    Orange binding, extra-white paper, pale blue 5 mm-style grid.
    Light only: dark mode shows the same paper.
 
@@ -353,6 +353,40 @@ body:is(.theme-light, .theme-dark) {
    container for window-control spacing on Windows and Linux. */
 body:not(.bloc-no-perf) .workspace-tabs.mod-top .workspace-tab-header-container {
   border-bottom: 2px dotted rgba(0, 0, 0, 0.3);
+}
+
+/* Phones have no tab bar, so the note's header becomes the orange cover:
+   it fills the status-bar area, carries the tear line, and slides away with
+   the header when Obsidian hides it on scroll. */
+body.is-mobile.is-phone .workspace-leaf-content .view-header {
+  --raised-background: transparent;
+  --icon-color: var(--bloc-band-icon);
+  --icon-color-hover: var(--bloc-on-orange);
+  --icon-color-active: var(--bloc-on-orange);
+  --icon-color-focused: var(--bloc-on-orange);
+  --icon-opacity: 1;
+  --background-modifier-hover: rgba(0, 0, 0, 0.08);
+  background-color: var(--bloc-orange);
+  margin-top: 0;
+  padding-top: var(--view-header-top-offset);
+  box-sizing: content-box;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+body.is-mobile.is-phone:not(.bloc-no-perf) .workspace-leaf-content .view-header {
+  border-bottom: 2px dotted rgba(0, 0, 0, 0.3);
+}
+body.is-phone .workspace-leaf-content .view-header .view-action {
+  background-color: transparent;
+  box-shadow: none;
+}
+body.is-phone .view-header .view-header-title {
+  color: var(--bloc-on-orange);
+  font-family: var(--bloc-font-head);
+  font-weight: 700;
+  font-synthesis: weight;
+  -webkit-text-stroke: 0.5px currentColor;
+  text-shadow: 0.45px 0 0 currentColor;
+  letter-spacing: 0.02em;
 }
 
 /* --------------------------------------------------------------------------
